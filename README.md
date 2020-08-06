@@ -1,5 +1,7 @@
 # sovcombank-dictionary
 
+Тестовое задание для Совкомбанка на позицию Frontend разработчика
+
 ## Project setup
 ```
 yarn install
@@ -24,6 +26,3 @@ yarn test:unit
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
