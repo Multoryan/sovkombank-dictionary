@@ -3,15 +3,18 @@
         <div class="layout-default__header">
             <TheHeader />
         </div>
+
         <div
             v-if="$route.meta.title"
             class="layout-default__title"
         >
             <h1>{{ $route.meta.title }}</h1>
         </div>
+
         <div class="layout-default__sidebar">
             <router-view name="sidebar" />
         </div>
+
         <div class="layout-default__content">
             <router-view />
         </div>
@@ -42,7 +45,9 @@ export default {
         'title title'
         'sidebar content';
     grid-template-columns: 30% 1fr;
-    grid-gap: 24px;
+    grid-gap: 3*$grid-gap;
+    max-width: $maxWidthContent;
+    margin: 0 auto;
 
     &__header {
         grid-area: header;
@@ -50,13 +55,13 @@ export default {
 
     &__title {
         grid-area: title;
-        color: #363636;
+        color: $colorHeader;
         text-align: left;
     }
 
     &__sidebar {
         grid-area: sidebar;
-        background-color: #efefef;
+        background-color: $colorSidebar;
     }
 
     &__content {

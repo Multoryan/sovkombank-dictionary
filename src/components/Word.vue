@@ -3,18 +3,18 @@
     <div class="word__content">
         <UiIcon
             v-if="isDraggable"
-            class="word__icon--drag"
+            class="word__icon-drag"
             name="drag-horizontal-variant"
             :size="24"
         />
 
-        <div class="word__text">
+        <router-link :to="{ name: 'Word', params: { id: word.id } }" class="word__text">
             <b>{{ word.word | firstLetterUppercase }}</b>
 
             <i class="word__space">{{ categories }}</i>
 
             <span>{{ word.text }}</span>
-        </div>
+        </router-link>
     </div>
 
     <FavoriteButton
@@ -65,19 +65,17 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
-    border-radius: 4px;
-    padding: 8px 12px;
+    background-color: $colorWhite;
+    border-radius: $defaultBorderRadius;
+    padding: $grid-gap 1.5*$grid-gap;
 
     &__content {
         display: flex;
         align-items: center;
     }
 
-    &__icon {
-        &--drag {
-            margin-right: 8px;
-        }
+    &__icon-drag {
+        margin-right: 8px;
     }
 
     &__text {
@@ -85,11 +83,13 @@ export default {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        text-decoration: none;
+        color: inherit;
     }
 
     &__space {
         display: inline-block;
-        margin: 0 16px;
+        margin: 0 2*$grid-gap;
     }
 }
 </style>

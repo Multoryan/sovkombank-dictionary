@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .the-sidebar {
-    padding: 16px;
-    border-radius: 4px;
+    padding: 2*$grid-gap;
+    border-radius: $defaultBorderRadius;
 }
 </style>

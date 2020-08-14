@@ -1,6 +1,7 @@
 <template>
     <div class="word">
-        Word: {{ word[0].word }}
+        <span>Здесь может быть более детальная информация о слове из параметра word</span>
+        <span>Word: <b>{{ word[0].word }}</b></span>
     </div>
 </template>
 
@@ -18,3 +19,10 @@ export default {
     }),
 };
 </script>
+
+<style lang="scss">
+.word {
+    display: flex;
+    flex-direction: column;
+}
+</style>

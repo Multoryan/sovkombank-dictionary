@@ -25,8 +25,8 @@ export default {
     },
 
     methods: {
-        updateSort(arr) {
-            this.$store.dispatch('favorites/changeList', arr);
+        updateSort(updatedArray) {
+            this.$store.dispatch('favorites/changeList', updatedArray);
         },
     },
 };

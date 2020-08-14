@@ -83,19 +83,6 @@ export default {
             });
         },
 
-        // eslint-disable-next-line arrow-body-style
-        getSortedList: (_state, getters) => {
-            return getters.getSearchList.sort((prev, next) => {
-                if (prev.word > next.word) {
-                    return 1;
-                }
-                if (prev.word < next.word) {
-                    return -1;
-                }
-                return 0;
-            });
-        },
-
         availableForms: (state) => state.list.reduce((res, { category }) => {
             category.forEach((cat) => {
                 // eslint-disable-next-line no-param-reassign

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import TheSidebar from '@/components/TheSidebar.vue';
 import TheSidebarFavorite from '@/components/TheSidebarFavorite.vue';
+import TheSidebarWord from '@/components/TheSidebarWord.vue';
 
 Vue.use(VueRouter);
 
@@ -33,7 +34,7 @@ const routes = [
         },
         components: {
             default: () => import('@/pages/Word.vue'),
-            sidebar: TheSidebar,
+            sidebar: TheSidebarWord,
         },
     },
 ];

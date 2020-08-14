@@ -10,6 +10,7 @@ export default new Vuex.Store({
         search: '', // Поисковое слово
         searchResults: [],
     },
+
     mutations: {
         setSearch(state, text = '') {
             state.search = text;
@@ -36,14 +37,16 @@ export default new Vuex.Store({
             });
         },
     },
+
     actions: {
-        async searchWords({ state, commit, dispatch }, { limit = 10, prefix = true }) {
-            const { data } = await api.get('/apix/search/thesaurus/en', {
+        async searchWords({ state, commit, dispatch }, { limit = 10, prefix = true, ...options }) {
+            const { data } = await api.get('/oxford-api/search/thesaurus/en', {
                 params: {
                     q: state.search,
                     limit,
                     prefix,
                     lexicalCategory: 'noun,adjective,verb',
+                    ...options,
                 },
                 headers: {
                     'X-Request-Id': Math.random().toString().slice(2),
@@ -53,13 +56,14 @@ export default new Vuex.Store({
             // В идеале конечно этого не делать.
             // Желательно чтобы поиск уже возращал необходимые параметры.
             // Из-за того что данных не хватает, приходится делать
-            // дополнительно 10 запросов
+            // дополнительно limit запросов
             const datas = await Promise.all(data.results.map(async (item) => {
                 try {
                     const { results } = await dispatch('getWordInfo', item);
                     return results;
                 } catch (e) {
                     // Если что то пошло не так с одним из запросов, то он будет null
+                    // При обработке ответа мы его просто отбросим
                     // Пример: Вызвать этот запрос с параметром `fre`, один из элементов вернет 404
                     return null;
                 }
@@ -69,7 +73,7 @@ export default new Vuex.Store({
         },
 
         async getWordInfo(_ctx, { id }) {
-            const { data } = await api.get('/apix/words/en-gb', {
+            const { data } = await api.get('/oxford-api/words/en-gb', {
                 params: {
                     q: id,
                 },

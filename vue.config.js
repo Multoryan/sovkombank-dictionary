@@ -1,11 +1,19 @@
 module.exports = {
     lintOnSave: false,
 
+    css: {
+        loaderOptions: {
+            scss: {
+                prependData: '@import "~@/styles/variables.scss";',
+            },
+        },
+    },
+
     devServer: {
         proxy: {
-            '/apix': {
+            '/oxford-api': {
                 target: process.env.VUE_APP_URL,
-                pathRewrite: { '^/apix': '' },
+                pathRewrite: { '^/oxford-api': '' },
                 changeOrigin: true,
                 secure: false,
             },

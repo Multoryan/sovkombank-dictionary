@@ -28,6 +28,7 @@ export default {
             if (this.size === null) {
                 return {};
             }
+
             return {
                 width: `${this.size}px`,
                 height: `${this.size}px`,

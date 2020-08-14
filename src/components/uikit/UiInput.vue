@@ -20,17 +20,16 @@ export default {
     computed: {
         paddingRight() {
             if (!this.$slots.append) {
-                return;
+                return {};
             }
 
-            // eslint-disable-next-line consistent-return
             return { paddingRight: '10px' };
         },
     },
 
     methods: {
-        input(e) {
-            this.$emit('input', e.target.value);
+        input(event) {
+            this.$emit('input', event.target.value);
         },
     },
 };
@@ -43,7 +42,7 @@ export default {
     &__input {
         box-sizing: border-box;
         border: 1px solid #cee7fa;
-        border-radius: 4px;
+        border-radius: $defaultBorderRadius;
         padding: 8px 12px;
         font-size: 16px;
         width: 100%;

@@ -13,7 +13,7 @@ export default {
 <style lang="scss">
 .logo {
     &__link {
-        color: #fff;
+        color: $colorWhite;
         text-decoration: none;
         font-weight: bold;
         font-size: 24px;

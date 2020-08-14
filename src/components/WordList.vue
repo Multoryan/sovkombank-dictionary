@@ -1,14 +1,14 @@
 <template>
     <div
-        class="word-list"
-        :is="isDraggable && words.length > 1 ? 'draggable' : 'div'"
         v-model="wordSort"
+        class="word-list"
+        :is="draggable ? 'draggable' : 'div'"
     >
         <Word
             v-for="word in words"
             :key="word.id"
             :word="word"
-            :isDraggable="isDraggable && words.length > 1"
+            :isDraggable="draggable"
         />
     </div>
 </template>
@@ -45,6 +45,10 @@ export default {
             set(val) {
                 this.$emit('updateSort', val);
             },
+        },
+
+        draggable() {
+            return this.isDraggable && this.words.length > 1;
         },
     },
 };

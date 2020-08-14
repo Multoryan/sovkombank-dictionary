@@ -19,6 +19,6 @@ export default {
 <style lang="scss">
 body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
-    background-color: #f8f4f4;
+    background-color: $colorBackground;
 }
 </style>

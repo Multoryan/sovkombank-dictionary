@@ -24,8 +24,8 @@ export default {
 .the-header {
     display: flex;
     justify-content: space-between;
-    padding: 32px;
-    border-radius: 4px;
-    background-color: #6ebffb;
+    padding: 4*$grid-gap;
+    border-radius: $defaultBorderRadius;
+    background-color: $colorPrimary;
 }
 </style>
