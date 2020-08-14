@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import TheSidebar from '@/components/TheSidebar.vue';
+import TheSidebarFavorite from '@/components/TheSidebarFavorite.vue';
 
 Vue.use(VueRouter);
 
@@ -8,15 +9,32 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home,
+        components: {
+            default: () => import('@/pages/Home.vue'),
+            sidebar: TheSidebar,
+        },
     },
     {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+        path: '/favorites',
+        name: 'Favorites',
+        meta: {
+            title: 'Starred Words',
+        },
+        components: {
+            default: () => import('@/pages/Favorites.vue'),
+            sidebar: TheSidebarFavorite,
+        },
+    },
+    {
+        path: '/word/:id',
+        name: 'Word',
+        meta: {
+            title: 'Word',
+        },
+        components: {
+            default: () => import('@/pages/Word.vue'),
+            sidebar: TheSidebar,
+        },
     },
 ];
 
